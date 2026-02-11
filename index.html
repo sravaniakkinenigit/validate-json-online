@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Free JSON Validator Online</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 40px;
+        }
+        textarea {
+            width: 80%;
+            height: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+        #result {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>JSON Validator</h1>
+
+<textarea id="jsonInput" placeholder="Paste your JSON here..."></textarea>
+<br>
+<button onclick="validateJSON()">Validate</button>
+
+<p id="result"></p>
+
+<script>
+function validateJSON() {
+    let input = document.getElementById("jsonInput").value;
+    let result = document.getElementById("result");
+
+    try {
+        JSON.parse(input);
+        result.innerHTML = "✅ Valid JSON";
+        result.style.color = "green";
+    } catch (e) {
+        result.innerHTML = "❌ Invalid JSON<br>" + e.message;
+        result.style.color = "red";
+    }
+}
+</script>
+
+</body>
+</html>
